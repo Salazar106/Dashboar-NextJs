@@ -2,8 +2,10 @@
 
 export default async function dashboard() {
   return (
-    <main>
-      <h1>hello</h1>
+    <main className='w-full h-full'>
+      <div className="w-full p-2 bg-gray-400 text-center">
+      </div>
+        
     </main>
   )
 }
