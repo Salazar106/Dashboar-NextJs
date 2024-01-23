@@ -3,11 +3,13 @@ import NavLinks from '@/app/ui/dashboard/nav-links';
 import AcmeLogo from '@/app/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import { signOut } from '@/auth';
+
 
 export default function SideNav() {
   return (
     <div className="flex h-full flex-col  ">
-      <Link className="flex h-20 items-center justify-center  bg-sky-900 p-4 md:h-40" href="/">
+      <Link className="flex h-20 items-center justify-center bg-gradient-to-t from-cyan-50 via-cyan-500 to-blue-900   p-4 md:h-40" href="/">
         <div className="w-25 text-white items-center md:w-40">
           <Image className='justify-center' width={120} height={120} src={'/favicon.ico'} alt={'hola'} />
           {/* <AcmeLogo /> */}
@@ -16,7 +18,10 @@ export default function SideNav() {
       <div className="flex grow flex-row justify-between space-x-2 bg-gray-100 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
-        <form>
+        <form action={async () => {
+            'use server';
+            await signOut();
+          }}>
           <button className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-rose-600 hover:text-blue-50 md:flex-none md:justify-start md:p-2 md:px-3">
             <PowerIcon className="w-6" />
             <div className="hidden md:block">Cerrar Sesión</div>
